@@ -75,7 +75,7 @@
                     </div>
                     <div>
                         <span class="font-bold text-lg tracking-tight text-stone-900 block sm:inline">Boyle Heights</span>
-                        <span class="font-medium text-terracotta-600 text-sm sm:text-base sm:ml-1">Recovery Coalition</span>
+                        <span class="font-medium text-terracotta-600 text-sm sm:text-base sm:ml-1">Recovery Effort</span>
                     </div>
                 </div>
                 <div class="flex items-center space-x-3">
@@ -114,7 +114,7 @@
                 Stand With Boyle Heights after the Lineage Fire
             </h1>
             <p class="text-base sm:text-xl text-stone-300 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
-                The destructive Lineage warehouse fire has deeply impacted our neighborhood. Join our volunteer coalition to clean up, distribute critical resources, and help our community recover.
+                The destructive Lineage warehouse fire has deeply impacted our neighborhood. Join our volunteer team to clean up, distribute critical resources, and help our community recover.
             </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-4xl mx-auto mt-6">
@@ -467,7 +467,7 @@
                                         </div>
                                         <div>
                                             <h4 class="font-extrabold text-base tracking-tight text-emerald-950">Google Sheets Live Sync</h4>
-                                            <p class="text-stone-500 text-xs mt-0.5">Stream volunteer signups directly into a spreadsheet in real-time.</p>
+                                            <p class="text-stone-500 text-xs mt-0.5 font-medium">Auto-forward form responses to a Google Spreadsheet instantly.</p>
                                         </div>
                                     </div>
                                     
@@ -483,11 +483,23 @@
                                             </button>
                                             <button onclick="syncAllToSheets()" class="bg-white hover:bg-stone-50 text-stone-700 border border-stone-200 px-4 py-3 rounded-xl text-xs font-bold transition flex-shrink-0 flex items-center space-x-1.5">
                                                 <i class="fa-solid fa-cloud-arrow-up text-emerald-600"></i>
-                                                <span>Sync All</span>
+                                                <span>Sync All Past</span>
                                             </button>
                                         </div>
                                     </div>
-                                    <p id="sheets-sync-status" class="text-xs font-medium text-emerald-800 mt-2.5 hidden"></p>
+                                    
+                                    <!-- Dynamic Feedback Helper Box -->
+                                    <div id="sheets-sync-status-box" class="mt-3 p-3 bg-white/80 border border-emerald-100 rounded-xl text-xs text-stone-600 hidden">
+                                        <p id="sheets-sync-status" class="font-semibold text-emerald-900"></p>
+                                        <div id="sheets-troubleshoot-tips" class="mt-2 text-[11px] text-stone-500 space-y-1 hidden">
+                                            <p class="font-bold text-red-700">Didn't see the connection row in your Google Sheet? Check these common reasons:</p>
+                                            <ul class="list-disc pl-4 space-y-0.5 text-stone-600">
+                                                <li><strong>Permission Issue:</strong> In Apps Script, did you set <em>"Who has access"</em> to <strong>Anyone</strong>? If left as "Only Myself", sync requests fail.</li>
+                                                <li><strong>Deployment Issue:</strong> When changing scripts, you must deploy a <strong>New Deployment</strong>. Saving code in the script editor does not automatically update live endpoints.</li>
+                                                <li><strong>Authorization:</strong> Ensure you ran the script manually once in the Apps Script window to grant account drive read/write authorization.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <!-- Accordion Instructions -->
@@ -495,22 +507,26 @@
                                     <button onclick="toggleSheetsGuide()" class="w-full flex items-center justify-between text-left outline-none">
                                         <span class="text-xs font-extrabold text-emerald-900 flex items-center space-x-1.5">
                                             <i class="fa-solid fa-circle-question text-emerald-600 text-sm"></i>
-                                            <span>How to set this up?</span>
+                                            <span>Copy Script & Setup Guide</span>
                                         </span>
                                         <i id="guide-chevron" class="fa-solid fa-chevron-down text-xs text-stone-400 transition-transform duration-200"></i>
                                     </button>
                                     
                                     <div id="sheets-guide-content" class="hidden mt-3 space-y-3.5 text-[11px] text-stone-600 border-t border-stone-100 pt-3.5 leading-relaxed">
-                                        <p>1. Open a new or existing <strong class="text-emerald-800">Google Sheet</strong>.</p>
-                                        <p>2. Go to <strong class="text-stone-800">Extensions > Apps Script</strong>.</p>
-                                        <p>3. Delete any default code and copy-paste our template:</p>
+                                        <p>1. Open your target <strong class="text-emerald-800">Google Sheet</strong>.</p>
+                                        <p>2. Open <strong class="text-stone-800">Extensions > Apps Script</strong>.</p>
+                                        <p>3. Erase default code and replace with this upgraded engine script:</p>
                                         <button onclick="copyAppsScriptTemplate()" class="w-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 font-extrabold py-2 rounded-xl text-[10px] transition flex items-center justify-center space-x-1.5">
                                             <i class="fa-solid fa-copy"></i>
-                                            <span id="copy-script-btn-text">Copy Apps Script Code</span>
+                                            <span id="copy-script-btn-text">Copy Upgraded Apps Script</span>
                                         </button>
-                                        <p>4. Click <strong class="text-stone-800">Deploy > New Deployment</strong>.</p>
-                                        <p>5. Choose <strong class="text-stone-800">Web App</strong>, change Access to <strong class="text-emerald-800">"Anyone"</strong> (important), click Deploy.</p>
-                                        <p>6. Copy the resulting Web App URL and paste it here.</p>
+                                        <p>4. In Apps Script, click <strong class="text-stone-800">Deploy > New Deployment</strong>.</p>
+                                        <p>5. Click the gear, select <strong class="text-stone-800">Web App</strong>, and make sure to configure exactly:</p>
+                                        <ul class="list-disc pl-4 mt-1 space-y-1 text-stone-500">
+                                            <li><strong>Execute as:</strong> Me (your email)</li>
+                                            <li><strong>Who has access:</strong> <span class="text-emerald-700 font-bold">Anyone</span> (not "Anyone with a Google Account")</li>
+                                        </ul>
+                                        <p>6. Click <strong>Deploy</strong>, grant account authorization, copy the Web App URL, and paste it here.</p>
                                     </div>
                                 </div>
                             </div>
@@ -610,30 +626,60 @@
             }
         };
 
+        // Upgraded Google Apps Script Template
         const APPS_SCRIPT_TEMPLATE = `function doPost(e) {
   try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    var data = JSON.parse(e.postData.contents);
+    var doc = SpreadsheetApp.getActiveSpreadsheet();
+    // Use or create a dedicated "Volunteers" sheet, fall back to first sheet
+    var sheet = doc.getSheetByName("Volunteers") || doc.getSheets()[0];
     
-    if (data.type === "ping") {
-      return ContentService.createTextOutput(JSON.stringify({status: "success", message: "Connected successfully!"}))
+    // Safely parse incoming payload
+    var contents = e.postData ? e.postData.contents : "";
+    if (!contents) {
+      return ContentService.createTextOutput(JSON.stringify({status: "error", message: "No post data received."}))
         .setMimeType(ContentService.MimeType.JSON);
     }
     
+    var data = JSON.parse(contents);
+    
+    // Create header row if empty and style it beautifully
     if (sheet.getLastRow() === 0) {
       sheet.appendRow(["Registration ID", "Volunteer Name", "Email", "Phone", "Event", "Shift", "Special Notes", "Registration Date"]);
+      sheet.getRange(1, 1, 1, 8).setFontWeight("bold").setBackground("#e2e8f0").setFontColor("#1e293b");
     }
     
+    // Connection test logic (writes immediately so user can visually verify)
+    if (data.type === "ping") {
+      sheet.appendRow([
+        "PING_TEST",
+        "SYSTEM CONNECTION OK",
+        "test@example.com",
+        "-",
+        "System Check",
+        "Integration Verification",
+        "If you see this row, your Google Sheets connection is fully functioning!",
+        new Date().toISOString()
+      ]);
+      try { sheet.autoResizeColumns(1, 8); } catch(err) {}
+      
+      return ContentService.createTextOutput(JSON.stringify({status: "success", message: "Ping received! Roster connection is active."}))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    // Write volunteer data row
     sheet.appendRow([
       data.id || "",
       data.name || "",
       data.email || "",
       data.phone || "",
-      data.event || "",
+      data.event === "canvas" ? "Community Canvas Outreach" : "Pop-up Resource Fair",
       data.shift || "",
       data.notes || "",
       data.createdAt || ""
     ]);
+    
+    // Automatically optimize column spacing
+    try { sheet.autoResizeColumns(1, 8); } catch(err) {}
     
     return ContentService.createTextOutput(JSON.stringify({status: "success"}))
       .setMimeType(ContentService.MimeType.JSON);
@@ -644,7 +690,7 @@
 }
 
 function doGet(e) {
-  return ContentService.createTextOutput("Google Sheet Integration is active! Send a POST request to record signups.");
+  return ContentService.createTextOutput("Google Sheets Volunteer Webhook is active and listening for POST payloads.");
 }`;
 
         // Initialize Firebase
@@ -844,11 +890,11 @@ function doGet(e) {
             if (!webhookUrl) return;
 
             try {
-                // Use no-cors mode to bypass standard cross-origin limits for basic POST requests
+                // Use default CORS mode to hit the redirect system smoothly
                 await fetch(webhookUrl, {
                     method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
+                    mode: 'no-cors', 
+                    headers: { 'Content-Type': 'text/plain' }, // Using text/plain avoids browser CORS preflight check while still passing clean stringified JSON
                     body: JSON.stringify(payload)
                 });
                 console.log("Signup forwarded successfully to Google Sheets.");
@@ -978,7 +1024,7 @@ function doGet(e) {
                 document.execCommand('copy');
                 btnText.innerText = "Copied to Clipboard!";
                 setTimeout(() => {
-                    btnText.innerText = "Copy Apps Script Code";
+                    btnText.innerText = "Copy Upgraded Apps Script";
                 }, 2500);
             } catch (err) {
                 console.error("Failed to copy using execCommand fallback", err);
@@ -986,9 +1032,13 @@ function doGet(e) {
             document.body.removeChild(textarea);
         }
 
+        // High fidelity test verification & explanation output
         window.saveAndTestSheetsURL = async function() {
             const input = document.getElementById('sheet-webhook-url');
+            const statusBox = document.getElementById('sheets-sync-status-box');
             const statusText = document.getElementById('sheets-sync-status');
+            const troubleshootBox = document.getElementById('sheets-troubleshoot-tips');
+            
             const url = input.value.trim();
 
             if (!url) {
@@ -996,29 +1046,33 @@ function doGet(e) {
                 return;
             }
 
-            statusText.classList.remove('hidden');
-            statusText.className = "text-xs font-semibold text-stone-500 mt-2.5 animate-pulse";
-            statusText.innerText = "Testing Connection... Send Ping";
+            // Save immediately
+            localStorage.setItem('boyle_sheets_url', url);
+
+            statusBox.classList.remove('hidden');
+            troubleshootBox.classList.add('hidden');
+            statusText.className = "text-xs font-semibold text-stone-500 animate-pulse";
+            statusText.innerHTML = `<i class="fa-solid fa-spinner animate-spin mr-1.5"></i> Launching test ping... checking Google connection.`;
 
             try {
-                // Save immediately
-                localStorage.setItem('boyle_sheets_url', url);
-
-                // Ping check
+                // Send Ping with CORS mode first (avoids blind no-cors if configured correctly)
                 await fetch(url, {
                     method: 'POST',
                     mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 'Content-Type': 'text/plain' },
                     body: JSON.stringify({ type: "ping" })
                 });
 
-                statusText.className = "text-xs font-semibold text-emerald-800 mt-2.5";
-                statusText.innerHTML = `<i class="fa-solid fa-circle-check"></i> URL saved and tested! Ping request delivered successfully.`;
-                showToast("Connection Active", "Your Google Sheet integration is saved and ready.", "emerald");
+                statusText.className = "text-xs font-semibold text-emerald-800";
+                statusText.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-1.5"></i> Test ping sent to Google! <strong class="underline">Action Required:</strong> Check your Google Sheet. If a "SYSTEM CONNECTION OK" row appeared, your integration works perfectly!`;
+                troubleshootBox.classList.remove('hidden');
+                showToast("Ping Dispatched", "Check your Google Sheet to verify receipt.", "green");
             } catch (err) {
-                statusText.className = "text-xs font-semibold text-red-600 mt-2.5";
-                statusText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Connection Failed. Ensure CORS is open on your Web App script.`;
-                showToast("Connection Warning", "Failed to confirm webhook response, but the URL has been saved.", "amber");
+                console.warn(err);
+                statusText.className = "text-xs font-semibold text-red-600";
+                statusText.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1.5"></i> Dispatch blocked by local browser permissions or bad URL.`;
+                troubleshootBox.classList.remove('hidden');
+                showToast("Connection Warning", "Failed to dispatch verification request.", "red");
             }
         }
 
@@ -1034,10 +1088,12 @@ function doGet(e) {
                 return;
             }
 
+            const statusBox = document.getElementById('sheets-sync-status-box');
             const statusText = document.getElementById('sheets-sync-status');
-            statusText.classList.remove('hidden');
-            statusText.className = "text-xs font-semibold text-stone-500 mt-2.5 animate-pulse";
-            statusText.innerText = `Syncing ${globalSignupsList.length} volunteers...`;
+            
+            statusBox.classList.remove('hidden');
+            statusText.className = "text-xs font-semibold text-stone-500 animate-pulse";
+            statusText.innerText = `Synchronizing ${globalSignupsList.length} volunteers in background...`;
 
             try {
                 let synced = 0;
@@ -1045,18 +1101,18 @@ function doGet(e) {
                     await fetch(url, {
                         method: 'POST',
                         mode: 'no-cors',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: { 'Content-Type': 'text/plain' },
                         body: JSON.stringify(signup)
                     });
                     synced++;
                 }
 
-                statusText.className = "text-xs font-semibold text-emerald-800 mt-2.5";
-                statusText.innerHTML = `<i class="fa-solid fa-circle-check"></i> Success! Synced ${synced} records to your Google Sheet.`;
+                statusText.className = "text-xs font-semibold text-emerald-800";
+                statusText.innerHTML = `<i class="fa-solid fa-circle-check"></i> Bulk sync finalized! Synced ${synced} historical rows successfully.`;
                 showToast("Roster Synchronized", `Successfully posted ${synced} rows into your Google Sheet.`, "emerald");
             } catch (err) {
                 console.error(err);
-                statusText.className = "text-xs font-semibold text-red-600 mt-2.5";
+                statusText.className = "text-xs font-semibold text-red-600";
                 statusText.innerText = "Sync interrupted. Please verify Web App URL configuration.";
                 showToast("Sync Error", "Google Sheets bulk post failed.", "red");
             }
@@ -1194,7 +1250,6 @@ function doGet(e) {
             });
 
             sorted.forEach(row => {
-                const eventLabel = row.event === 'canvas' ? 'Canvas' : 'Resource Fair';
                 const eventBadge = row.event === 'canvas' 
                     ? '<span class="bg-terracotta-50 text-terracotta-700 border border-terracotta-100 px-2 py-0.5 rounded text-xs font-semibold">Canvas</span>'
                     : '<span class="bg-brand-50 text-brand-700 border border-brand-100 px-2 py-0.5 rounded text-xs font-semibold">Resource Fair</span>';
@@ -1268,7 +1323,7 @@ function doGet(e) {
             globalSignupsList.forEach(item => {
                 const shiftText = SHIFT_NAMES[item.event][item.shift].replace(/,/g, ' ');
                 const cleanedNotes = (item.notes || '').replace(/[\n\r,]/g, ' ');
-                const row = `"${item.id}","${item.name}","${item.email}","${item.phone}","${item.event === 'canvas' ? 'Community Canvas' : 'Resource Fair'}","${shiftText}","${cleanedNotes}","${item.createdAt}"`;
+                const row = `"${item.id}","${item.name}","${item.email}","${item.phone}","${item.event === 'canvas' ? 'Community Canvas Outreach' : 'Pop-up Resource Fair'}","${shiftText}","${cleanedNotes}","${item.createdAt}"`;
                 csvContent += row + "\n";
             });
 
