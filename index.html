@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-stone-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boyle Heights Recovery - Volunteer Sign Up</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                        },
+                        terracotta: {
+                            50: '#fdf4f2',
+                            100: '#fbe8e4',
+                            500: '#e05a47',
+                            600: '#cb412f',
+                            700: '#aa3122',
+                            800: '#8c291c',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for beautiful dashboard lists */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-terracotta-600 text-white p-2 rounded-xl shadow-md">
+                        <i class="fa-solid fa-hands-holding-child text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg tracking-tight text-stone-900 block sm:inline">Boyle Heights</span>
+                        <span class="font-medium text-terracotta-600 text-sm sm:text-base sm:ml-1">Recovery Coalition</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button onclick="scrollToShifts()" class="text-sm font-semibold text-stone-600 hover:text-terracotta-600 transition">
+                        View Shifts
+                    </button>
+                    <button onclick="toggleCoordinatorModal()" class="bg-stone-100 hover:bg-stone-200 text-stone-700 px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1.5">
+                        <i class="fa-solid fa-clipboard-user"></i>
+                        <span>Coordinator Panel</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / Info Banner -->
+    <header class="relative bg-stone-900 text-white overflow-hidden py-12 sm:py-20">
+        <!-- Background decorative vectors -->
+        <div class="absolute inset-0 opacity-10">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+                <defs>
+                    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                        <rect width="20" height="20" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+        </div>
+        
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center space-x-2 bg-terracotta-500/20 text-terracotta-300 border border-terracotta-500/30 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase mb-6">
+                <span class="w-2 h-2 rounded-full bg-terracotta-400 animate-pulse"></span>
+                <span>Community Response Action</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4 sm:mb-6 max-w-3xl mx-auto leading-tight">
+                Stand With Boyle Heights after the Lineage Fire
+            </h1>
+            <p class="text-base sm:text-xl text-stone-300 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
+                The destructive Lineage warehouse fire has deeply impacted our neighborhood. Join our volunteer coalition to clean up, distribute critical resources, and help our community recover.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-4xl mx-auto mt-6">
+                <!-- Info block 1 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-terracotta-500/20 text-terracotta-400 p-2.5 rounded-xl">
+                            <i class="fa-solid fa-palette text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-white">1. Community Canvas</h3>
+                            <p class="text-stone-300 text-sm mt-1">Thursday, July 16, 2026</p>
+                            <p class="text-stone-400 text-xs mt-1.5 leading-relaxed">Neighborhood outreach, air quality education, and checking in on affected families and local merchants.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Info block 2 -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-brand-500/20 text-brand-400 p-2.5 rounded-xl">
+                            <i class="fa-solid fa-handshake-angle text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-white">2. Pop-up Resource Fair</h3>
+                            <p class="text-stone-300 text-sm mt-1">Saturday, July 18, 2026</p>
+                            <p class="text-stone-400 text-xs mt-1.5 leading-relaxed">Distributing clean water, filtration systems, food supplies, and health services directly to affected residents.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 w-full">
+        <!-- Live Alert Banner -->
+        <div class="mb-8 bg-brand-50 border border-brand-200 rounded-2xl p-4 flex items-center justify-between shadow-sm">
+            <div class="flex items-center space-x-3">
+                <div class="bg-brand-500 text-white p-2 rounded-xl flex-shrink-0 animate-bounce">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-stone-900 text-sm">Real-time Coordination Enabled</h4>
+                    <p class="text-stone-600 text-xs">These counters update automatically as community members sign up.</p>
+                </div>
+            </div>
+            <span class="hidden md:inline-flex items-center text-xs font-semibold text-stone-500">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 mr-1.5 animate-pulse"></span> Connected to database
+            </span>
+        </div>
+
+        <div id="shifts-section" class="scroll-mt-20">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900">Select Your Volunteer Shift</h2>
+                    <p class="text-stone-600 text-sm sm:text-base mt-1">Please select an event shift below to secure your spot. Caps are strictly enforced.</p>
+                </div>
+                <div id="my-signups-indicator" class="mt-4 md:mt-0 hidden">
+                    <button onclick="scrollToMySignups()" class="inline-flex items-center space-x-1.5 text-xs font-bold text-terracotta-600 bg-terracotta-50 hover:bg-terracotta-100 border border-terracotta-200 px-3 py-1.5 rounded-full transition">
+                        <i class="fa-solid fa-user-check"></i>
+                        <span>You have signed up! Manage Here</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Shift Selector Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- EVENT 1: Community Canvas -->
+                <div class="bg-white rounded-3xl border border-stone-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="bg-gradient-to-r from-terracotta-600 to-terracotta-700 p-6 text-white">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-extrabold tracking-wider uppercase bg-white/20 px-3 py-1 rounded-full">Event 1</span>
+                            <span class="text-sm font-semibold opacity-90"><i class="fa-solid fa-calendar mr-1.5"></i>Thursday, July 16</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold mt-4">Community Canvas</h3>
+                        <p class="text-terracotta-100 text-xs sm:text-sm mt-1 opacity-90">Focus: Local merchant & resident outreach. Walkabouts, flyer updates, resource assessments.</p>
+                    </div>
+
+                    <div class="p-6 flex-grow space-y-6">
+                        <!-- Shift 1.1 -->
+                        <div id="card-canvas-shift1" class="border border-stone-200 rounded-2xl p-5 hover:border-terracotta-300 transition duration-300 relative overflow-hidden group">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                <div>
+                                    <span class="text-xs font-bold text-terracotta-600 uppercase tracking-wide">Morning Outreach</span>
+                                    <h4 class="text-lg font-bold text-stone-900 mt-1">10:00 AM – 1:00 PM</h4>
+                                    <div class="flex items-center space-x-2 mt-2">
+                                        <i class="fa-solid fa-users text-stone-400 text-sm"></i>
+                                        <span class="text-xs text-stone-500 font-medium"><span id="canvas-shift1-count">0</span> / 16 filled</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col sm:items-end justify-center">
+                                    <div class="w-32 bg-stone-100 h-2.5 rounded-full overflow-hidden mb-2">
+                                        <div id="canvas-shift1-progress" class="bg-terracotta-500 h-full w-0 transition-all duration-500"></div>
+                                    </div>
+                                    <button id="btn-canvas-shift1" onclick="openSignupForm('canvas', 'shift1')" class="w-full sm:w-auto bg-terracotta-600 hover:bg-terracotta-700 text-white font-bold text-sm px-4 py-2 rounded-xl shadow-sm hover:shadow transition duration-200">
+                                        Sign Up
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Shift 1.2 -->
+                        <div id="card-canvas-shift2" class="border border-stone-200 rounded-2xl p-5 hover:border-terracotta-300 transition duration-300 relative overflow-hidden group">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                <div>
+                                    <span class="text-xs font-bold text-terracotta-600 uppercase tracking-wide">Late Afternoon Outreach</span>
+                                    <h4 class="text-lg font-bold text-stone-900 mt-1">4:00 PM – 7:00 PM</h4>
+                                    <div class="flex items-center space-x-2 mt-2">
+                                        <i class="fa-solid fa-users text-stone-400 text-sm"></i>
+                                        <span class="text-xs text-stone-500 font-medium"><span id="canvas-shift2-count">0</span> / 16 filled</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col sm:items-end justify-center">
+                                    <div class="w-32 bg-stone-100 h-2.5 rounded-full overflow-hidden mb-2">
+                                        <div id="canvas-shift2-progress" class="bg-terracotta-500 h-full w-0 transition-all duration-500"></div>
+                                    </div>
+                                    <button id="btn-canvas-shift2" onclick="openSignupForm('canvas', 'shift2')" class="w-full sm:w-auto bg-terracotta-600 hover:bg-terracotta-700 text-white font-bold text-sm px-4 py-2 rounded-xl shadow-sm hover:shadow transition duration-200">
+                                        Sign Up
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EVENT 2: Pop-up Resource Fair -->
+                <div class="bg-white rounded-3xl border border-stone-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="bg-gradient-to-r from-brand-700 to-brand-800 p-6 text-white">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-extrabold tracking-wider uppercase bg-white/20 px-3 py-1 rounded-full">Event 2</span>
+                            <span class="text-sm font-semibold opacity-90"><i class="fa-solid fa-calendar mr-1.5"></i>Saturday, July 18</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold mt-4">Pop-up Resource Fair</h3>
+                        <p class="text-brand-100 text-xs sm:text-sm mt-1 opacity-90">Focus: Direct aid distribution, water distribution, supply sorting, air-mask handoffs, and resource mapping.</p>
+                    </div>
+
+                    <div class="p-6 flex-grow space-y-6">
+                        <!-- Shift 2.1 -->
+                        <div id="card-fair-shift1" class="border border-stone-200 rounded-2xl p-5 hover:border-brand-600 transition duration-300 relative overflow-hidden group">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                <div>
+                                    <span class="text-xs font-bold text-brand-600 uppercase tracking-wide">Early Prep & Setup</span>
+                                    <h4 class="text-lg font-bold text-stone-900 mt-1">7:00 AM – 11:00 AM</h4>
+                                    <div class="flex items-center space-x-2 mt-2">
+                                        <i class="fa-solid fa-users text-stone-400 text-sm"></i>
+                                        <span class="text-xs text-stone-500 font-medium"><span id="fair-shift1-count">0</span> / 25 filled</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col sm:items-end justify-center">
+                                    <div class="w-32 bg-stone-100 h-2.5 rounded-full overflow-hidden mb-2">
+                                        <div id="fair-shift1-progress" class="bg-brand-600 h-full w-0 transition-all duration-500"></div>
+                                    </div>
+                                    <button id="btn-fair-shift1" onclick="openSignupForm('fair', 'shift1')" class="w-full sm:w-auto bg-brand-700 hover:bg-brand-800 text-white font-bold text-sm px-4 py-2 rounded-xl shadow-sm hover:shadow transition duration-200">
+                                        Sign Up
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Shift 2.2 -->
+                        <div id="card-fair-shift2" class="border border-stone-200 rounded-2xl p-5 hover:border-brand-600 transition duration-300 relative overflow-hidden group">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                <div>
+                                    <span class="text-xs font-bold text-brand-600 uppercase tracking-wide">Afternoon Distribution & Wrap-up</span>
+                                    <h4 class="text-lg font-bold text-stone-900 mt-1">11:00 AM – 4:00 PM</h4>
+                                    <div class="flex items-center space-x-2 mt-2">
+                                        <i class="fa-solid fa-users text-stone-400 text-sm"></i>
+                                        <span class="text-xs text-stone-500 font-medium"><span id="fair-shift2-count">0</span> / 25 filled</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col sm:items-end justify-center">
+                                    <div class="w-32 bg-stone-100 h-2.5 rounded-full overflow-hidden mb-2">
+                                        <div id="fair-shift2-progress" class="bg-brand-600 h-full w-0 transition-all duration-500"></div>
+                                    </div>
+                                    <button id="btn-fair-shift2" onclick="openSignupForm('fair', 'shift2')" class="w-full sm:w-auto bg-brand-700 hover:bg-brand-800 text-white font-bold text-sm px-4 py-2 rounded-xl shadow-sm hover:shadow transition duration-200">
+                                        Sign Up
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Sign-Up Form Section (Initially Hidden / Smooth Reveal) -->
+        <div id="signup-form-section" class="scroll-mt-20 mt-12 bg-white rounded-3xl border border-stone-200 shadow-lg p-6 sm:p-10 max-w-2xl mx-auto hidden transition-all duration-300">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h3 class="text-2xl font-extrabold text-stone-900">Secure Your Spot</h3>
+                    <p id="signup-selected-display" class="text-terracotta-600 font-semibold text-sm mt-1"></p>
+                </div>
+                <button onclick="closeSignupForm()" class="text-stone-400 hover:text-stone-600 transition p-2 rounded-full hover:bg-stone-100">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <form id="volunteer-form" onsubmit="handleSignupSubmit(event)" class="space-y-5">
+                <input type="hidden" id="form-event">
+                <input type="hidden" id="form-shift">
+
+                <div>
+                    <label for="form-name" class="block text-xs font-bold text-stone-700 uppercase tracking-wide mb-2">Full Name</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-stone-400">
+                            <i class="fa-solid fa-user"></i>
+                        </span>
+                        <input type="text" id="form-name" required class="block w-full pl-10 pr-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-terracotta-500/20 focus:border-terracotta-500 outline-none transition text-stone-900 placeholder:text-stone-400" placeholder="Aurelio Perez">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label for="form-email" class="block text-xs font-bold text-stone-700 uppercase tracking-wide mb-2">Email Address</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-stone-400">
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
+                            <input type="email" id="form-email" required class="block w-full pl-10 pr-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-terracotta-500/20 focus:border-terracotta-500 outline-none transition text-stone-900 placeholder:text-stone-400" placeholder="aurelio@gmail.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="form-phone" class="block text-xs font-bold text-stone-700 uppercase tracking-wide mb-2">Phone Number</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-stone-400">
+                                <i class="fa-solid fa-phone"></i>
+                            </span>
+                            <input type="tel" id="form-phone" required class="block w-full pl-10 pr-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-terracotta-500/20 focus:border-terracotta-500 outline-none transition text-stone-900 placeholder:text-stone-400" placeholder="(323) 555-0199">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="form-notes" class="block text-xs font-bold text-stone-700 uppercase tracking-wide mb-2">Special Notes or Skills (Optional)</label>
+                    <textarea id="form-notes" rows="3" class="block w-full p-4 rounded-xl border border-stone-200 focus:ring-2 focus:ring-terracotta-500/20 focus:border-terracotta-500 outline-none transition text-stone-900 placeholder:text-stone-400" placeholder="Bilingual (Spanish/English), can drive utility van, bringing face masks, etc."></textarea>
+                </div>
+
+                <div class="flex items-start">
+                    <div class="flex items-center h-5">
+                        <input id="form-disclaimer" required type="checkbox" class="h-4 w-4 rounded text-terracotta-600 focus:ring-terracotta-500 border-stone-300">
+                    </div>
+                    <label for="form-disclaimer" class="ml-3 text-xs text-stone-500 leading-normal">
+                        I commit to attending this shift. If my schedule changes, I will use my confirmation dashboard to cancel my slot to allow another neighbor to participate.
+                    </label>
+                </div>
+
+                <button type="submit" id="btn-submit-form" class="w-full bg-stone-900 hover:bg-stone-800 text-white font-bold py-3.5 px-6 rounded-xl shadow hover:shadow-md transition duration-200 flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-check-to-slot"></i>
+                    <span>Confirm My Reservation</span>
+                </button>
+            </form>
+        </div>
+
+        <!-- User's Existing Signups Section -->
+        <div id="user-signups-section" class="scroll-mt-20 mt-16 max-w-4xl mx-auto hidden">
+            <h3 class="text-xl sm:text-2xl font-extrabold text-stone-900 mb-6 flex items-center space-x-2">
+                <i class="fa-solid fa-address-card text-terracotta-600"></i>
+                <span>Your Registered Shifts</span>
+            </h3>
+            <div id="user-signups-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Dynamically generated list cards -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Coordinator Modal (Hidden by Default) -->
+    <div id="coordinator-modal" class="fixed inset-0 z-50 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Overlay -->
+            <div onclick="toggleCoordinatorModal()" class="fixed inset-0 bg-stone-900/60 backdrop-blur-sm transition-opacity" aria-hidden="true"></div>
+            
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            
+            <div class="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full w-full">
+                <div class="bg-stone-900 px-6 py-4 flex justify-between items-center text-white">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-shield-halved text-brand-400"></i>
+                        <h3 class="text-lg font-bold tracking-tight">Coordinator Dashboard</h3>
+                    </div>
+                    <button onclick="toggleCoordinatorModal()" class="text-stone-400 hover:text-white transition p-1.5 rounded-full hover:bg-white/10">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+                
+                <div class="p-6">
+                    <!-- Password Screen -->
+                    <div id="coordinator-auth" class="space-y-4 max-w-md mx-auto py-8">
+                        <div class="text-center">
+                            <div class="bg-brand-50 text-brand-600 p-3 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3">
+                                <i class="fa-solid fa-lock text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-stone-950">Coordinator Authentication Required</h4>
+                            <p class="text-stone-500 text-xs mt-1">Please enter the security PIN to view active signups, volunteer rosters, and export sheets.</p>
+                        </div>
+                        <div>
+                            <input type="password" id="coord-pin" class="block w-full p-3 rounded-xl border border-stone-200 text-center text-stone-900 outline-none focus:ring-2 focus:ring-stone-500/20 focus:border-stone-500" placeholder="Enter Coordinator PIN: boyle">
+                        </div>
+                        <button onclick="authenticateCoordinator()" class="w-full bg-stone-900 hover:bg-stone-800 text-white font-bold py-3.5 px-6 rounded-xl shadow transition">
+                            Unlock Portal
+                        </button>
+                        <p id="coord-error" class="text-center text-red-500 text-xs font-semibold hidden">Invalid passcode. Please try again.</p>
+                    </div>
+
+                    <!-- Protected Coordinator Content -->
+                    <div id="coordinator-content" class="hidden space-y-6">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-stone-100 pb-4">
+                            <div>
+                                <h4 class="font-bold text-stone-950 text-lg">Active Volunteer Roster</h4>
+                                <p class="text-stone-500 text-xs">A comprehensive view of your team across all community shifts.</p>
+                            </div>
+                            <div class="flex items-center space-x-3 w-full sm:w-auto">
+                                <button onclick="exportToCSV()" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-sm flex items-center justify-center space-x-1.5 transition">
+                                    <i class="fa-solid fa-file-excel"></i>
+                                    <span>Export CSV</span>
+                                </button>
+                                <button onclick="clearAllDemoSignups()" class="w-full sm:w-auto bg-stone-100 hover:bg-stone-200 text-stone-700 px-4 py-2 rounded-xl text-sm font-bold flex items-center justify-center space-x-1.5 transition">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                    <span>Reset Roster</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Statistics Summary Grid -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="bg-stone-50 border border-stone-200 rounded-2xl p-4 text-center">
+                                <span class="text-xs font-bold text-stone-500 uppercase">Total Team Members</span>
+                                <span id="stat-total" class="block text-2xl sm:text-3xl font-extrabold text-stone-900 mt-1">0</span>
+                            </div>
+                            <div class="bg-stone-50 border border-stone-200 rounded-2xl p-4 text-center">
+                                <span class="text-xs font-bold text-stone-500 uppercase">Canvas Filled</span>
+                                <span id="stat-canvas" class="block text-2xl sm:text-3xl font-extrabold text-terracotta-600 mt-1">0 / 32</span>
+                            </div>
+                            <div class="bg-stone-50 border border-stone-200 rounded-2xl p-4 text-center">
+                                <span class="text-xs font-bold text-stone-500 uppercase">Fair Filled</span>
+                                <span id="stat-fair" class="block text-2xl sm:text-3xl font-extrabold text-brand-600 mt-1">0 / 50</span>
+                            </div>
+                            <div class="bg-stone-50 border border-stone-200 rounded-2xl p-4 text-center">
+                                <span class="text-xs font-bold text-stone-500 uppercase">Capacity Rate</span>
+                                <span id="stat-ratio" class="block text-2xl sm:text-3xl font-extrabold text-stone-900 mt-1">0%</span>
+                            </div>
+                        </div>
+
+                        <!-- Google Sheets Integration Card -->
+                        <div class="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-3xl p-6 shadow-sm">
+                            <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2.5 text-emerald-800">
+                                        <div class="bg-emerald-600 text-white p-2 rounded-xl shadow">
+                                            <i class="fa-solid fa-file-csv text-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-extrabold text-base tracking-tight text-emerald-950">Google Sheets Live Sync</h4>
+                                            <p class="text-stone-500 text-xs mt-0.5">Stream volunteer signups directly into a spreadsheet in real-time.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Configuration Form -->
+                                    <div class="mt-5 flex flex-col sm:flex-row gap-3">
+                                        <div class="flex-grow">
+                                            <label for="sheet-webhook-url" class="block text-[10px] font-bold text-stone-500 uppercase tracking-wide mb-1.5">Apps Script Web App URL</label>
+                                            <input type="url" id="sheet-webhook-url" class="block w-full text-xs p-3 rounded-xl border border-stone-200 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 bg-white text-stone-900 font-medium" placeholder="https://script.google.com/macros/s/.../exec">
+                                        </div>
+                                        <div class="flex items-end gap-2">
+                                            <button onclick="saveAndTestSheetsURL()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-3 rounded-xl text-xs font-bold transition flex-shrink-0 shadow hover:shadow-md">
+                                                Save & Test Connection
+                                            </button>
+                                            <button onclick="syncAllToSheets()" class="bg-white hover:bg-stone-50 text-stone-700 border border-stone-200 px-4 py-3 rounded-xl text-xs font-bold transition flex-shrink-0 flex items-center space-x-1.5">
+                                                <i class="fa-solid fa-cloud-arrow-up text-emerald-600"></i>
+                                                <span>Sync All</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p id="sheets-sync-status" class="text-xs font-medium text-emerald-800 mt-2.5 hidden"></p>
+                                </div>
+
+                                <!-- Accordion Instructions -->
+                                <div class="w-full lg:w-80 flex-shrink-0 bg-white border border-emerald-100 rounded-2xl p-4 shadow-sm">
+                                    <button onclick="toggleSheetsGuide()" class="w-full flex items-center justify-between text-left outline-none">
+                                        <span class="text-xs font-extrabold text-emerald-900 flex items-center space-x-1.5">
+                                            <i class="fa-solid fa-circle-question text-emerald-600 text-sm"></i>
+                                            <span>How to set this up?</span>
+                                        </span>
+                                        <i id="guide-chevron" class="fa-solid fa-chevron-down text-xs text-stone-400 transition-transform duration-200"></i>
+                                    </button>
+                                    
+                                    <div id="sheets-guide-content" class="hidden mt-3 space-y-3.5 text-[11px] text-stone-600 border-t border-stone-100 pt-3.5 leading-relaxed">
+                                        <p>1. Open a new or existing <strong class="text-emerald-800">Google Sheet</strong>.</p>
+                                        <p>2. Go to <strong class="text-stone-800">Extensions > Apps Script</strong>.</p>
+                                        <p>3. Delete any default code and copy-paste our template:</p>
+                                        <button onclick="copyAppsScriptTemplate()" class="w-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 font-extrabold py-2 rounded-xl text-[10px] transition flex items-center justify-center space-x-1.5">
+                                            <i class="fa-solid fa-copy"></i>
+                                            <span id="copy-script-btn-text">Copy Apps Script Code</span>
+                                        </button>
+                                        <p>4. Click <strong class="text-stone-800">Deploy > New Deployment</strong>.</p>
+                                        <p>5. Choose <strong class="text-stone-800">Web App</strong>, change Access to <strong class="text-emerald-800">"Anyone"</strong> (important), click Deploy.</p>
+                                        <p>6. Copy the resulting Web App URL and paste it here.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Volunteer Table/List Container -->
+                        <div class="border border-stone-200 rounded-2xl overflow-hidden bg-white shadow-sm">
+                            <div class="overflow-x-auto custom-scrollbar">
+                                <table class="min-w-full divide-y divide-stone-200">
+                                    <thead class="bg-stone-50">
+                                        <tr>
+                                            <th class="px-6 py-3 text-left text-xs font-bold text-stone-500 uppercase tracking-wider">Volunteer</th>
+                                            <th class="px-6 py-3 text-left text-xs font-bold text-stone-500 uppercase tracking-wider">Contact</th>
+                                            <th class="px-6 py-3 text-left text-xs font-bold text-stone-500 uppercase tracking-wider">Event & Shift</th>
+                                            <th class="px-6 py-3 text-left text-xs font-bold text-stone-500 uppercase tracking-wider">Special Notes</th>
+                                            <th class="px-6 py-3 text-right text-xs font-bold text-stone-500 uppercase tracking-wider">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="roster-table-body" class="bg-white divide-y divide-stone-200 text-sm">
+                                        <!-- Table Rows dynamically loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="roster-empty-state" class="text-center py-10 px-4">
+                                <i class="fa-solid fa-clipboard text-stone-300 text-4xl mb-3"></i>
+                                <h5 class="font-bold text-stone-900">No active volunteers registered yet</h5>
+                                <p class="text-stone-500 text-xs mt-1">Share the link with the team members to gather roster records.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Toast Notification -->
+    <div id="status-toast" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-white border border-stone-200 rounded-2xl shadow-2xl p-4 flex items-center space-x-3.5 max-w-sm pointer-events-auto">
+            <div id="toast-icon-box" class="p-2.5 rounded-xl text-white">
+                <i id="toast-icon" class="fa-solid"></i>
+            </div>
+            <div>
+                <h5 id="toast-title" class="font-bold text-stone-950 text-sm">Action Complete</h5>
+                <p id="toast-message" class="text-stone-500 text-xs mt-0.5"></p>
+            </div>
+            <button onclick="dismissToast()" class="text-stone-400 hover:text-stone-600 transition p-1">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-stone-100 border-t border-stone-200 py-8 text-center text-stone-500 text-sm mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="font-semibold text-stone-700">Boyle Heights Warehouse Fire Recovery Effort</p>
+            <p class="text-xs mt-2 text-stone-400">Coordinated in alliance with neighborhood associations, mutual aid tables, and relief centers.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase Imports and Logic Modules -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, deleteDoc, onSnapshot, collection, query } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Environment values
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'boyle-heights-recovery-signup';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+            apiKey: "demo-api-key",
+            authDomain: "demo-auth.firebaseapp.com",
+            projectId: "demo-project",
+            storageBucket: "demo-storage.appspot.com",
+            messagingSenderId: "demo-sender",
+            appId: "demo-app-id"
+        };
+        
+        const isDemo = firebaseConfig.apiKey === "demo-api-key";
+
+        // Global Firebase Variables
+        let app, db, auth, user;
+        let globalSignupsList = [];
+
+        // Application Constants & Limits
+        const LIMITS = {
+            canvas: { shift1: 16, shift2: 16 },
+            fair: { shift1: 25, shift2: 25 }
+        };
+
+        const SHIFT_NAMES = {
+            canvas: {
+                shift1: "10am - 1pm outreach (Canvas)",
+                shift2: "4pm - 7pm outreach (Canvas)"
+            },
+            fair: {
+                shift1: "7am - 11am setup/distribution (Fair)",
+                shift2: "11am - 4pm afternoon wrap (Fair)"
+            }
+        };
+
+        const APPS_SCRIPT_TEMPLATE = `function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = JSON.parse(e.postData.contents);
+    
+    if (data.type === "ping") {
+      return ContentService.createTextOutput(JSON.stringify({status: "success", message: "Connected successfully!"}))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(["Registration ID", "Volunteer Name", "Email", "Phone", "Event", "Shift", "Special Notes", "Registration Date"]);
+    }
+    
+    sheet.appendRow([
+      data.id || "",
+      data.name || "",
+      data.email || "",
+      data.phone || "",
+      data.event || "",
+      data.shift || "",
+      data.notes || "",
+      data.createdAt || ""
+    ]);
+    
+    return ContentService.createTextOutput(JSON.stringify({status: "success"}))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (error) {
+    return ContentService.createTextOutput(JSON.stringify({status: "error", message: error.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+function doGet(e) {
+  return ContentService.createTextOutput("Google Sheet Integration is active! Send a POST request to record signups.");
+}`;
+
+        // Initialize Firebase
+        try {
+            app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+        } catch (err) {
+            console.error("Firebase startup issues; defaulting to offline sync simulation.", err);
+        }
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            if (!isDemo && auth) {
+                try {
+                    // Check custom token fallback vs anonymous signing
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                } catch (error) {
+                    console.error("Auth Failure:", error);
+                }
+            } else {
+                console.log("Mock Firestore/LocalStorage execution started.");
+                setupMockDatabase();
+            }
+        });
+
+        if (auth) {
+            onAuthStateChanged(auth, (activeUser) => {
+                if (activeUser) {
+                    user = activeUser;
+                    subscribeToSignups();
+                }
+            });
+        }
+
+        // Subscribe to real-time updates of the sign-ups
+        function subscribeToSignups() {
+            if (!user) return;
+            // RULE 1: Strict collection paths
+            const signupsCollectionPath = collection(db, 'artifacts', appId, 'public', 'data', 'signups');
+            
+            // RULE 2: No Complex Queries (Fetch everything, sort/filter locally)
+            onSnapshot(query(signupsCollectionPath), (snapshot) => {
+                const list = [];
+                snapshot.forEach((doc) => {
+                    list.push({ id: doc.id, ...doc.data() });
+                });
+                globalSignupsList = list;
+                updateStatsUI();
+                renderUserRegisteredShifts();
+                renderRosterTable();
+                
+                // Prefill Google Sheets Integration URL input field
+                const savedSheetsUrl = localStorage.getItem('boyle_sheets_url');
+                if (savedSheetsUrl) {
+                    const input = document.getElementById('sheet-webhook-url');
+                    if (input) input.value = savedSheetsUrl;
+                }
+            }, (error) => {
+                console.error("Firestore sync error:", error);
+                showToast("System Error", "Could not sync slots dynamically. Re-trying.", "red");
+            });
+        }
+
+        // --- Mock Engine for Local Storage Fallback if Firebase is not connected or in sandbox ---
+        function setupMockDatabase() {
+            const stored = localStorage.getItem('boyle_recovery_mock_db');
+            if (stored) {
+                globalSignupsList = JSON.parse(stored);
+            } else {
+                globalSignupsList = [];
+                localStorage.setItem('boyle_recovery_mock_db', JSON.stringify([]));
+            }
+            updateStatsUI();
+            renderUserRegisteredShifts();
+            renderRosterTable();
+
+            // Prefill Google Sheets URL inside demo
+            const savedSheetsUrl = localStorage.getItem('boyle_sheets_url');
+            if (savedSheetsUrl) {
+                const input = document.getElementById('sheet-webhook-url');
+                if (input) input.value = savedSheetsUrl;
+            }
+        }
+
+        function saveMockData() {
+            localStorage.setItem('boyle_recovery_mock_db', JSON.stringify(globalSignupsList));
+            updateStatsUI();
+            renderUserRegisteredShifts();
+            renderRosterTable();
+        }
+
+        // Render current stats on remaining slots and totals
+        function updateStatsUI() {
+            const canvasS1_Count = globalSignupsList.filter(s => s.event === 'canvas' && s.shift === 'shift1').length;
+            const canvasS2_Count = globalSignupsList.filter(s => s.event === 'canvas' && s.shift === 'shift2').length;
+            const fairS1_Count = globalSignupsList.filter(s => s.event === 'fair' && s.shift === 'shift1').length;
+            const fairS2_Count = globalSignupsList.filter(s => s.event === 'fair' && s.shift === 'shift2').length;
+
+            // UI updates
+            document.getElementById('canvas-shift1-count').innerText = canvasS1_Count;
+            document.getElementById('canvas-shift2-count').innerText = canvasS2_Count;
+            document.getElementById('fair-shift1-count').innerText = fairS1_Count;
+            document.getElementById('fair-shift2-count').innerText = fairS2_Count;
+
+            // Progress bar rates
+            setProgressBarWidth('canvas-shift1-progress', (canvasS1_Count / LIMITS.canvas.shift1) * 100);
+            setProgressBarWidth('canvas-shift2-progress', (canvasS2_Count / LIMITS.canvas.shift2) * 100);
+            setProgressBarWidth('fair-shift1-progress', (fairS1_Count / LIMITS.fair.shift1) * 100);
+            setProgressBarWidth('fair-shift2-progress', (fairS2_Count / LIMITS.fair.shift2) * 100);
+
+            // Handle disabled button states on full shifts
+            toggleButtonStatus('btn-canvas-shift1', canvasS1_Count >= LIMITS.canvas.shift1, 'card-canvas-shift1');
+            toggleButtonStatus('btn-canvas-shift2', canvasS2_Count >= LIMITS.canvas.shift2, 'card-canvas-shift2');
+            toggleButtonStatus('btn-fair-shift1', fairS1_Count >= LIMITS.fair.shift1, 'card-fair-shift1');
+            toggleButtonStatus('btn-fair-shift2', fairS2_Count >= LIMITS.fair.shift2, 'card-fair-shift2');
+
+            // Dashboard Analytics Panel Update
+            const totalSignups = globalSignupsList.length;
+            const totalCapacity = 32 + 50; // 32 (canvas) + 50 (fair)
+            document.getElementById('stat-total').innerText = totalSignups;
+            document.getElementById('stat-canvas').innerText = `${canvasS1_Count + canvasS2_Count} / 32`;
+            document.getElementById('stat-fair').innerText = `${fairS1_Count + fairS2_Count} / 50`;
+            
+            const fillRatio = Math.round((totalSignups / totalCapacity) * 100);
+            document.getElementById('stat-ratio').innerText = `${isNaN(fillRatio) ? 0 : fillRatio}%`;
+        }
+
+        function setProgressBarWidth(id, pct) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.style.width = `${Math.min(pct, 100)}%`;
+                // Alert visual indicator colors
+                if (pct >= 100) {
+                    element.className = element.className.replace(/bg-(terracotta|brand)-[0-9]+/g, 'bg-emerald-600');
+                } else if (pct >= 80) {
+                    element.className = element.className.replace(/bg-(terracotta|brand)-[0-9]+/g, 'bg-amber-500');
+                }
+            }
+        }
+
+        function toggleButtonStatus(btnId, isFull, cardId) {
+            const btn = document.getElementById(btnId);
+            const card = document.getElementById(cardId);
+            if (btn) {
+                if (isFull) {
+                    btn.innerText = "Shift Full";
+                    btn.disabled = true;
+                    btn.className = "w-full sm:w-auto bg-stone-200 text-stone-500 font-bold text-sm px-4 py-2 rounded-xl cursor-not-allowed";
+                    card.classList.add('bg-stone-50/50');
+                } else {
+                    btn.disabled = false;
+                    const baseClass = btnId.includes('canvas') 
+                        ? "w-full sm:w-auto bg-terracotta-600 hover:bg-terracotta-700 text-white font-bold text-sm px-4 py-2 rounded-xl shadow-sm hover:shadow transition duration-200"
+                        : "w-full sm:w-auto bg-brand-700 hover:bg-brand-800 text-white font-bold text-sm px-4 py-2 rounded-xl shadow-sm hover:shadow transition duration-200";
+                    btn.className = baseClass;
+                    btn.innerText = "Sign Up";
+                    card.classList.remove('bg-stone-50/50');
+                }
+            }
+        }
+
+        // Open Sign Up Form
+        window.openSignupForm = function(eventKey, shiftKey) {
+            const heading = eventKey === 'canvas' ? "Community Canvas" : "Pop-up Resource Fair";
+            const shiftTime = SHIFT_NAMES[eventKey][shiftKey];
+            
+            document.getElementById('form-event').value = eventKey;
+            document.getElementById('form-shift').value = shiftKey;
+            document.getElementById('signup-selected-display').innerHTML = `<i class="fa-solid fa-calendar-day mr-1"></i> ${heading}: ${shiftTime}`;
+            
+            const formSection = document.getElementById('signup-form-section');
+            formSection.classList.remove('hidden');
+            formSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Clean visual boundary state on selection
+            if (eventKey === 'canvas') {
+                formSection.className = formSection.className.replace(/border-brand-[0-9]+/g, 'border-terracotta-300');
+                formSection.className += " border-terracotta-300";
+            } else {
+                formSection.className = formSection.className.replace(/border-terracotta-[0-9]+/g, 'border-brand-600');
+                formSection.className += " border-brand-600";
+            }
+        }
+
+        window.closeSignupForm = function() {
+            document.getElementById('signup-form-section').classList.add('hidden');
+            document.getElementById('volunteer-form').reset();
+        }
+
+        // Forward registration row directly to Google App Script Webhook
+        async function forwardToGoogleSheets(payload) {
+            const webhookUrl = localStorage.getItem('boyle_sheets_url');
+            if (!webhookUrl) return;
+
+            try {
+                // Use no-cors mode to bypass standard cross-origin limits for basic POST requests
+                await fetch(webhookUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                console.log("Signup forwarded successfully to Google Sheets.");
+            } catch (err) {
+                console.warn("Failed sending backup sync to Google Sheets:", err);
+            }
+        }
+
+        // Handle core registration submission
+        window.handleSignupSubmit = async function(e) {
+            e.preventDefault();
+            
+            const eventKey = document.getElementById('form-event').value;
+            const shiftKey = document.getElementById('form-shift').value;
+            const name = document.getElementById('form-name').value.trim();
+            const email = document.getElementById('form-email').value.trim();
+            const phone = document.getElementById('form-phone').value.trim();
+            const notes = document.getElementById('form-notes').value.trim();
+
+            if (!name || !email || !phone) {
+                showToast("Missing Fields", "Please complete all fields to submit your sign-up.", "amber");
+                return;
+            }
+
+            // Client-side verification check
+            const currentCount = globalSignupsList.filter(s => s.event === eventKey && s.shift === shiftKey).length;
+            const limitMax = LIMITS[eventKey][shiftKey];
+
+            if (currentCount >= limitMax) {
+                showToast("Shift Filled", "Sorry, this shift just hit its volunteer cap limit. Please select another time.", "red");
+                closeSignupForm();
+                return;
+            }
+
+            // Check if user is already registered for this exact event and shift
+            const alreadyRegistered = globalSignupsList.some(s => s.email.toLowerCase() === email.toLowerCase() && s.event === eventKey && s.shift === shiftKey);
+            if (alreadyRegistered) {
+                showToast("Already Registered", "You have already secured a slot for this shift with this email.", "amber");
+                closeSignupForm();
+                return;
+            }
+
+            const recordId = isDemo ? 'local_' + Date.now() : doc(collection(db, 'placeholder')).id;
+            const payload = {
+                id: recordId,
+                name,
+                email,
+                phone,
+                notes,
+                event: eventKey,
+                shift: shiftKey,
+                createdAt: new Date().toISOString()
+            };
+
+            // Attempt save
+            try {
+                if (!isDemo && auth && db) {
+                    if (!user) {
+                        showToast("Authentication Error", "You must be authenticated with the system first.", "red");
+                        return;
+                    }
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'signups', recordId);
+                    await setDoc(docRef, payload);
+                } else {
+                    // Simulated storage setup
+                    globalSignupsList.push(payload);
+                    saveMockData();
+                }
+
+                // Append local storage token so this browser knows they have active keys
+                saveToMyReservations(recordId);
+                
+                // Sync to Google Sheets if a URL is saved
+                forwardToGoogleSheets(payload);
+                
+                showToast("Registration Confirmed", `Success! Your shift for ${eventKey === 'canvas' ? 'Community Canvas' : 'Resource Fair'} is reserved.`, "green");
+                closeSignupForm();
+                scrollToMySignups();
+            } catch (err) {
+                console.error("Critical submission error: ", err);
+                showToast("Database Connection Blocked", "Your signup could not be written. Try again.", "red");
+            }
+        }
+
+        // Track locally created reservations for self-cancellation dashboard
+        function saveToMyReservations(recordId) {
+            let myKeys = JSON.parse(localStorage.getItem('boyle_my_reservations') || '[]');
+            if (!myKeys.includes(recordId)) {
+                myKeys.push(recordId);
+                localStorage.setItem('boyle_my_reservations', JSON.stringify(myKeys));
+            }
+            renderUserRegisteredShifts();
+        }
+
+        window.scrollToMySignups = function() {
+            const element = document.getElementById('user-signups-section');
+            if (element) {
+                element.classList.remove('hidden');
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        window.scrollToShifts = function() {
+            document.getElementById('shifts-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.toggleSheetsGuide = function() {
+            const content = document.getElementById('sheets-guide-content');
+            const chevron = document.getElementById('guide-chevron');
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                chevron.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                chevron.classList.remove('rotate-180');
+            }
+        }
+
+        window.copyAppsScriptTemplate = function() {
+            const btnText = document.getElementById('copy-script-btn-text');
+            const textarea = document.createElement('textarea');
+            textarea.value = APPS_SCRIPT_TEMPLATE;
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                btnText.innerText = "Copied to Clipboard!";
+                setTimeout(() => {
+                    btnText.innerText = "Copy Apps Script Code";
+                }, 2500);
+            } catch (err) {
+                console.error("Failed to copy using execCommand fallback", err);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        window.saveAndTestSheetsURL = async function() {
+            const input = document.getElementById('sheet-webhook-url');
+            const statusText = document.getElementById('sheets-sync-status');
+            const url = input.value.trim();
+
+            if (!url) {
+                showToast("Missing URL", "Please enter a valid Google Apps Script Web App URL.", "amber");
+                return;
+            }
+
+            statusText.classList.remove('hidden');
+            statusText.className = "text-xs font-semibold text-stone-500 mt-2.5 animate-pulse";
+            statusText.innerText = "Testing Connection... Send Ping";
+
+            try {
+                // Save immediately
+                localStorage.setItem('boyle_sheets_url', url);
+
+                // Ping check
+                await fetch(url, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ type: "ping" })
+                });
+
+                statusText.className = "text-xs font-semibold text-emerald-800 mt-2.5";
+                statusText.innerHTML = `<i class="fa-solid fa-circle-check"></i> URL saved and tested! Ping request delivered successfully.`;
+                showToast("Connection Active", "Your Google Sheet integration is saved and ready.", "emerald");
+            } catch (err) {
+                statusText.className = "text-xs font-semibold text-red-600 mt-2.5";
+                statusText.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Connection Failed. Ensure CORS is open on your Web App script.`;
+                showToast("Connection Warning", "Failed to confirm webhook response, but the URL has been saved.", "amber");
+            }
+        }
+
+        window.syncAllToSheets = async function() {
+            const url = localStorage.getItem('boyle_sheets_url');
+            if (!url) {
+                showToast("Setup Required", "Please configure and test your Web App URL first.", "amber");
+                return;
+            }
+
+            if (globalSignupsList.length === 0) {
+                showToast("No Records", "There are no current registrations to sync.", "stone");
+                return;
+            }
+
+            const statusText = document.getElementById('sheets-sync-status');
+            statusText.classList.remove('hidden');
+            statusText.className = "text-xs font-semibold text-stone-500 mt-2.5 animate-pulse";
+            statusText.innerText = `Syncing ${globalSignupsList.length} volunteers...`;
+
+            try {
+                let synced = 0;
+                for (const signup of globalSignupsList) {
+                    await fetch(url, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(signup)
+                    });
+                    synced++;
+                }
+
+                statusText.className = "text-xs font-semibold text-emerald-800 mt-2.5";
+                statusText.innerHTML = `<i class="fa-solid fa-circle-check"></i> Success! Synced ${synced} records to your Google Sheet.`;
+                showToast("Roster Synchronized", `Successfully posted ${synced} rows into your Google Sheet.`, "emerald");
+            } catch (err) {
+                console.error(err);
+                statusText.className = "text-xs font-semibold text-red-600 mt-2.5";
+                statusText.innerText = "Sync interrupted. Please verify Web App URL configuration.";
+                showToast("Sync Error", "Google Sheets bulk post failed.", "red");
+            }
+        }
+
+        // Render cards under user registered shifts
+        function renderUserRegisteredShifts() {
+            const myKeys = JSON.parse(localStorage.getItem('boyle_my_reservations') || '[]');
+            const container = document.getElementById('user-signups-list');
+            const section = document.getElementById('user-signups-section');
+            const navIndicator = document.getElementById('my-signups-indicator');
+
+            // Filter active global registrations matching local browser history ids
+            const myActiveSignups = globalSignupsList.filter(s => myKeys.includes(s.id));
+
+            if (myActiveSignups.length === 0) {
+                section.classList.add('hidden');
+                navIndicator.classList.add('hidden');
+                return;
+            }
+
+            section.classList.remove('hidden');
+            navIndicator.classList.remove('hidden');
+            container.innerHTML = '';
+
+            myActiveSignups.forEach(item => {
+                const title = item.event === 'canvas' ? "Community Canvas Outreach" : "Pop-up Resource Fair";
+                const shiftDetail = SHIFT_NAMES[item.event][item.shift];
+                const dateLabel = item.event === 'canvas' ? "Thursday, July 16" : "Saturday, July 18";
+                const cardColorClass = item.event === 'canvas' ? 'border-terracotta-200 bg-terracotta-50/40' : 'border-brand-200 bg-brand-50/40';
+
+                const cardHtml = `
+                    <div class="border rounded-2xl p-5 ${cardColorClass} shadow-sm relative flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-stone-500 uppercase">${dateLabel}</span>
+                            <h4 class="font-extrabold text-stone-900 mt-0.5">${title}</h4>
+                            <p class="text-xs font-semibold text-stone-600 mt-1"><i class="fa-solid fa-clock mr-1 text-stone-400"></i> ${shiftDetail}</p>
+                            <p class="text-xs text-stone-500 mt-2"><strong class="text-stone-700">Volunteer:</strong> ${item.name}</p>
+                        </div>
+                        <div class="mt-5 pt-4 border-t border-stone-200/60 flex items-center justify-between">
+                            <span class="text-[10px] font-mono text-stone-400 bg-stone-100 px-2 py-1 rounded">ID: ${item.id.substring(0, 8)}</span>
+                            <button onclick="cancelRegistration('${item.id}', '${item.name}')" class="text-xs font-bold text-red-600 hover:text-red-700 transition flex items-center space-x-1">
+                                <i class="fa-solid fa-calendar-xmark"></i>
+                                <span>Cancel Shift</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cardHtml;
+            });
+        }
+
+        // Action to remove reservation/cancel slot
+        window.cancelRegistration = async function(id, name) {
+            // Replaces browser confirm dialog with in-page aesthetic verification modal or simple prompt
+            const confirmed = window.confirm(`Are you sure you want to cancel the registration for ${name}?`);
+            if (!confirmed) return;
+
+            try {
+                if (!isDemo && db) {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'signups', id);
+                    await deleteDoc(docRef);
+                } else {
+                    globalSignupsList = globalSignupsList.filter(s => s.id !== id);
+                    saveMockData();
+                }
+
+                // Delete local tracker registry
+                let myKeys = JSON.parse(localStorage.getItem('boyle_my_reservations') || '[]');
+                myKeys = myKeys.filter(k => k !== id);
+                localStorage.setItem('boyle_my_reservations', JSON.stringify(myKeys));
+
+                showToast("Registration Cancelled", "Your reservation was successfully withdrawn. The slot is open.", "stone");
+                renderUserRegisteredShifts();
+            } catch (err) {
+                console.error("Deletion error: ", err);
+                showToast("Database error", "Could not remove reservation right now.", "red");
+            }
+        }
+
+        // Open / Close Coordinator Portal
+        window.toggleCoordinatorModal = function() {
+            const modal = document.getElementById('coordinator-modal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                
+                // Keep unlocked session on reopening
+                if (localStorage.getItem('coord_unlocked') === 'true') {
+                    document.getElementById('coordinator-auth').classList.add('hidden');
+                    document.getElementById('coordinator-content').classList.remove('hidden');
+                } else {
+                    document.getElementById('coordinator-auth').classList.remove('hidden');
+                    document.getElementById('coordinator-content').classList.add('hidden');
+                    document.getElementById('coord-pin').focus();
+                }
+            } else {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        window.authenticateCoordinator = function() {
+            const pin = document.getElementById('coord-pin').value.trim();
+            if (pin.toLowerCase() === 'boyle') {
+                localStorage.setItem('coord_unlocked', 'true');
+                document.getElementById('coordinator-auth').classList.add('hidden');
+                document.getElementById('coordinator-content').classList.remove('hidden');
+                document.getElementById('coord-error').classList.add('hidden');
+            } else {
+                const errorText = document.getElementById('coord-error');
+                errorText.classList.remove('hidden');
+                errorText.classList.add('animate-shake');
+            }
+        }
+
+        // Fill Coordinator Volunteer table
+        function renderRosterTable() {
+            const tbody = document.getElementById('roster-table-body');
+            const emptyState = document.getElementById('roster-empty-state');
+
+            if (globalSignupsList.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            tbody.innerHTML = '';
+
+            // Sort chronological or alphabetical
+            const sorted = [...globalSignupsList].sort((a, b) => {
+                if (a.event !== b.event) return a.event.localeCompare(b.event);
+                return a.shift.localeCompare(b.shift);
+            });
+
+            sorted.forEach(row => {
+                const eventLabel = row.event === 'canvas' ? 'Canvas' : 'Resource Fair';
+                const eventBadge = row.event === 'canvas' 
+                    ? '<span class="bg-terracotta-50 text-terracotta-700 border border-terracotta-100 px-2 py-0.5 rounded text-xs font-semibold">Canvas</span>'
+                    : '<span class="bg-brand-50 text-brand-700 border border-brand-100 px-2 py-0.5 rounded text-xs font-semibold">Resource Fair</span>';
+                
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-stone-50/80 transition duration-150";
+                tr.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="font-semibold text-stone-900">${row.name}</div>
+                        <div class="text-[10px] text-stone-400 font-mono">${row.id}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-stone-600">
+                        <div class="flex items-center space-x-1.5">
+                            <i class="fa-solid fa-envelope text-stone-400 text-xs"></i>
+                            <span>${row.email}</span>
+                        </div>
+                        <div class="flex items-center space-x-1.5 mt-0.5 text-stone-500">
+                            <i class="fa-solid fa-phone text-stone-400 text-xs"></i>
+                            <span>${row.phone}</span>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-stone-600">
+                        <div class="flex items-center space-x-2">
+                            ${eventBadge}
+                            <span class="font-medium text-stone-700 text-xs">${SHIFT_NAMES[row.event][row.shift].split(' (')[0]}</span>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 max-w-xs truncate text-stone-500 text-xs">
+                        ${row.notes || '<span class="text-stone-300">--</span>'}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right text-xs font-medium">
+                        <button onclick="removeVolunteerAsAdmin('${row.id}', '${row.name}')" class="text-red-500 hover:text-red-700 transition font-bold">
+                            Remove
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Coordinator view - delete button
+        window.removeVolunteerAsAdmin = async function(id, name) {
+            const confirmed = window.confirm(`Administrative Action: Are you absolutely sure you want to remove ${name} from this roster?`);
+            if (!confirmed) return;
+
+            try {
+                if (!isDemo && db) {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'signups', id);
+                    await deleteDoc(docRef);
+                } else {
+                    globalSignupsList = globalSignupsList.filter(s => s.id !== id);
+                    saveMockData();
+                }
+                showToast("Admin Action Completed", `Removed ${name} from the roster database.`, "stone");
+            } catch (err) {
+                console.error(err);
+                showToast("Admin Action Failed", "Database rejected roster removal query.", "red");
+            }
+        }
+
+        // Export active signups data to CSV
+        window.exportToCSV = function() {
+            if (globalSignupsList.length === 0) {
+                showToast("Cannot Export", "No active registrations found to generate CSV.", "amber");
+                return;
+            }
+
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Registration ID,Volunteer Name,Email,Phone,Event,Shift,Special Notes,Registration Date\n";
+
+            globalSignupsList.forEach(item => {
+                const shiftText = SHIFT_NAMES[item.event][item.shift].replace(/,/g, ' ');
+                const cleanedNotes = (item.notes || '').replace(/[\n\r,]/g, ' ');
+                const row = `"${item.id}","${item.name}","${item.email}","${item.phone}","${item.event === 'canvas' ? 'Community Canvas' : 'Resource Fair'}","${shiftText}","${cleanedNotes}","${item.createdAt}"`;
+                csvContent += row + "\n";
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `boyle_heights_recovery_volunteers_${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast("Export Initiated", "Roster CSV downloaded successfully.", "emerald");
+        }
+
+        // Reset testing state for trial/coordinator evaluations
+        window.clearAllDemoSignups = async function() {
+            const confirmClear = window.confirm("Reset Database: Clear ALL signups from the system? This action is irreversible.");
+            if (!confirmClear) return;
+
+            if (!isDemo && db) {
+                try {
+                    // Loop deletion
+                    const deletions = globalSignupsList.map(item => {
+                        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'signups', item.id);
+                        return deleteDoc(docRef);
+                    });
+                    await Promise.all(deletions);
+                } catch (err) {
+                    console.error("Mass clear failure: ", err);
+                    showToast("Database Denied Reset", "Cannot clear synchronized server rows.", "red");
+                    return;
+                }
+            } else {
+                globalSignupsList = [];
+                saveMockData();
+            }
+
+            localStorage.removeItem('boyle_my_reservations');
+            showToast("Database Reset", "Roster completely purged.", "stone");
+            renderUserRegisteredShifts();
+        }
+
+        // Toast Alerts Helper
+        window.showToast = function(title, msg, colorType = "brand") {
+            const toast = document.getElementById('status-toast');
+            const iconBox = document.getElementById('toast-icon-box');
+            const icon = document.getElementById('toast-icon');
+            const titleEl = document.getElementById('toast-title');
+            const msgEl = document.getElementById('toast-message');
+
+            titleEl.innerText = title;
+            msgEl.innerText = msg;
+
+            // Apply theme/palette colors to toast icon container
+            iconBox.className = "p-2.5 rounded-xl text-white";
+            if (colorType === 'red') {
+                iconBox.classList.add('bg-red-600');
+                icon.className = "fa-solid fa-circle-exclamation";
+            } else if (colorType === 'green' || colorType === 'emerald') {
+                iconBox.classList.add('bg-emerald-600');
+                icon.className = "fa-solid fa-circle-check";
+            } else if (colorType === 'amber') {
+                iconBox.classList.add('bg-amber-500');
+                icon.className = "fa-solid fa-triangle-exclamation";
+            } else if (colorType === 'terracotta') {
+                iconBox.classList.add('bg-terracotta-600');
+                icon.className = "fa-solid fa-circle-check";
+            } else {
+                iconBox.classList.add('bg-stone-700');
+                icon.className = "fa-solid fa-circle-info";
+            }
+
+            // Slide up toast
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            // Autoclose countdown
+            clearTimeout(window.toastTimer);
+            window.toastTimer = setTimeout(() => {
+                dismissToast();
+            }, 5500);
+        }
+
+        window.dismissToast = function() {
+            const toast = document.getElementById('status-toast');
+            toast.classList.remove('translate-y-0', 'opacity-100');
+            toast.classList.add('translate-y-24', 'opacity-0');
+        }
+    </script>
+</body>
+</html>
